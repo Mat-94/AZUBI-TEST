@@ -31,7 +31,7 @@ const AddTodoForm = ({ fetchTodos, page, limit }) => {
       const resp1 = await addTodo({ ...newTodo });
       console.log("newTodo display");
 
-      const resp = axios.post("http://localhost:3000/api/todos", newTodo);
+      const resp = axios.post(`${import.meta.env.VITE_API_URL}/api/todos`, newTodo);
       console.log(resp);
     }
     catch (ex) {

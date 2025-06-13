@@ -12,7 +12,7 @@ const useAddTodos = (fetchTodos, page, limit, setNewTodo) => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        "http://localhost:3000/api/todos",
+        `${import.meta.env.VITE_API_URL}/api/gettodos?page=${page}&limit=${limit}`,
         {
           method: "POST",
           headers: {

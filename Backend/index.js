@@ -10,9 +10,9 @@ import mongoose from "mongoose";
 
 // initApp(app, express);
 
-// app.listen(PORT, () => {
-//   console.log(`listening on port ${PORT}`);
-// });
+ app.listen(PORT, () => {
+   console.log(`listening on port ${PORT}`);
+ });
 
 
 //const express = require('express');
@@ -29,7 +29,8 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection URI
-const MONGO_URI = 'mongodb://127.0.0.1:27017';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongo:27017';
+
 //const MONGO_URI = 'mongodb://mongo-shared-dev:fikTpih4U2!@20.218.241.192:27017/?directConnection=true&appName=mongosh+1.8.2&authMechanism=DEFAULT';
 
 const dbname = 'todos';
