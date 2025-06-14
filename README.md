@@ -7,7 +7,8 @@ sudo apt update && sudo apt upgrade -y
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
-# Log out and back in or run: newgrp docker
+ 
+## Log out and log back in or run: newgrp docker
 Install Docker Compose:
 
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -15,10 +16,10 @@ sudo chmod +x /usr/local/bin/docker-compose
 Clone the repository and build:
 
 git clone https://github.com/icnoka/fullstack-todo-list.git
-cd fullstack-todo-list.git
+cd fullstack-todo-list
 ## Dockerfiles
 cd Frontend ---> vi Dockerfile --->
-### Frontend Dockerfile (Frontend/Dockerfile)
+## Frontend Dockerfile (Frontend/Dockerfile)
 FROM node:18-alpine as builder
 WORKDIR /app
 COPY package*.json ./
