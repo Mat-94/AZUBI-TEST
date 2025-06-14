@@ -37,9 +37,9 @@ cd Backend  ---> vi Dockerfile
 ### Backend Dockerfile (Backend/Dockerfile)
 FROM node:18-alpine
 WORKDIR /app
-COPY backend/package*.json ./
+COPY package*.json ./
 RUN npm install
-COPY backend .
+COPY . .
 EXPOSE 3000
 CMD ["node", "index.js"]
 
@@ -88,6 +88,41 @@ networks:
  todo-network:
  driver: bridge
 *******************************************************************************************************************************
+////////////////////////////////////////////////////////////////////////////
+after creating docker-compose, cd into Frontend and create .env like this: 
+vi .env  >>>paste the values below there
+VITE_API_URL=http://3.144.175.188:3000
+
+
+then cd Backend ---> vi index.js ---> add the code below (at the bottom of the file)
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running at http://0.0.0.0:${PORT}`);
+
+in thesame file, uncomment the field below:
+// app.listen(PORT, () => {
+//   console.log(`listening on port ${PORT}`);
+// });
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+cd Frontend/src/hooks/useGetTodos.js --> replace the field below
+try {
+      const response = await fetch(
+        `https://fullstack-todolist-upnv.onrender.com/todos?page=${page}&limit=${limit}`
+      );
+
+      NOTE ----> USE THIS INSTEAD
+       try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/gettodos?page=${page}&limit=${limit}`
+      ); 
+
+
+      /////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 docker-compose up --build -d
 docker ps
 
