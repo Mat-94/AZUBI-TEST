@@ -8,7 +8,7 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
  
-## Log out and log back in or run: newgrp docker
+## Log out and log back in or run: newgrp docker (Then logout and re-login (or run newgrp docker) for Docker permissions to apply.)
 Install Docker Compose:
 
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
